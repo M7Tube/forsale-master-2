@@ -634,6 +634,7 @@ class SpicalAPIController extends Controller
                 'car_id' => $request->ad_id ?? 0,
                 'real_estate_id' => 0,
                 'job_id' => 0,
+                'mobile_id' => 0,
                 'user_id' => $request->user_id,
             ]);
             if ($data) {
@@ -651,6 +652,7 @@ class SpicalAPIController extends Controller
                 'car_id' => 0,
                 'real_estate_id' => $request->ad_id ?? 0,
                 'job_id' => 0,
+                'mobile_id' => 0,
                 'user_id' => $request->user_id,
             ]);
             if ($data) {
@@ -668,6 +670,25 @@ class SpicalAPIController extends Controller
                 'car_id' => 0,
                 'real_estate_id' => 0,
                 'job_id' => $request->ad_id ?? 0,
+                'mobile_id' => 0,
+                'user_id' => $request->user_id,
+            ]);
+            if ($data) {
+                return $this->success('Favorite', $data);
+            } else {
+                return $this->fails();
+            }
+        } else if ($request->category == 4) { //mobile ad
+            $check = Favorite::where([['mobile_id', $request->ad_id], ['user_id', $request->user_id]])->first();
+            if ($check) {
+                $check->delete();
+                return $this->success('Favorite', 'Deleted Successfully');
+            }
+            $data = Favorite::Create([
+                'car_id' => 0,
+                'real_estate_id' => 0,
+                'job_id' => 0,
+                'mobile_id' => $request->ad_id ?? 0,
                 'user_id' => $request->user_id,
             ]);
             if ($data) {
