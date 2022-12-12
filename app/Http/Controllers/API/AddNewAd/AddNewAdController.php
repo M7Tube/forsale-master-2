@@ -153,6 +153,12 @@ class AddNewAdController extends Controller
                     'AdStatus' => AdStatusResource::collection(AdStatus::all(['ad_statuse_id', 'ar_name'])),
                 ];
                 return $this->success('info', $info);
+            } else if ($category == 4) { //mobiles
+                $info = [
+                    'Governorate' => GovernorateResource::collection(Governorate::all(['governorate_id', 'ar_name'])),
+                    'AdStatus' => AdStatusResource::collection(AdStatus::all(['ad_statuse_id', 'ar_name'])),
+                ];
+                return $this->success('info', $info);
             } else {
                 return $this->fails();
             }
@@ -245,6 +251,12 @@ class AddNewAdController extends Controller
                     'Areas' => AreaResource::collection(Area::all(['area_id', 'en_name'])),
                     'PersonLangueges' => PersonLanguegesResource::collection(PersonLangueges::all(['lang_id', 'en_name'])),
                     'YearsOfExperience' => YearsOfExperienceResource::collection(YearsOfExperience::all(['YOE_id', 'en_name'])),
+                    'AdStatus' => AdStatusResource::collection(AdStatus::all(['ad_statuse_id', 'en_name'])),
+                ];
+                return $this->success('info', $info);
+            } else if ($category == 4) { //mobiles
+                $info = [
+                    'Governorate' => GovernorateResource::collection(Governorate::all(['governorate_id', 'en_name'])),
                     'AdStatus' => AdStatusResource::collection(AdStatus::all(['ad_statuse_id', 'en_name'])),
                 ];
                 return $this->success('info', $info);
