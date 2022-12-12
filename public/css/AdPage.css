@@ -1,0 +1,116 @@
+.carousel {
+    position: relative;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .carousel-item img {
+        width: 100%;
+        height: 50vw;
+        object-fit: fill;
+    }
+    #carousel-thumbs img {
+        width: 100%;
+        height: 25vw;
+        object-fit: fill;
+        border: 5px solid transparent;
+        cursor: pointer;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .carousel-item img {
+        width: 100%;
+        height: 50vw;
+        object-fit: fill;
+    }
+    #carousel-thumbs img {
+        width: 100%;
+        height: 12.5vw;
+        object-fit: fill;
+        border: 5px solid transparent;
+        cursor: pointer;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .carousel-item img {
+        width: 100%;
+        height: 35vw;
+        object-fit: fill;
+    }
+    #carousel-thumbs img {
+        width: 100%;
+        height: 7.5vw;
+        object-fit: fill;
+        border: 5px solid transparent;
+        cursor: pointer;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .carousel-item img {
+        width: 100%;
+        height: 25vw;
+        object-fit: fill;
+    }
+    #carousel-thumbs img {
+        width: 100%;
+        height: 5vw;
+        object-fit: fill;
+        border: 5px solid transparent;
+        cursor: pointer;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .carousel-item img {
+        width: 100%;
+        height: 25vw;
+        object-fit: fill;
+    }
+    #carousel-thumbs img {
+        width: 100%;
+        height: 5vw;
+        object-fit: fill;
+        border: 5px solid transparent;
+        cursor: pointer;
+    }
+}
+
+#carousel-thumbs {
+    background: rgba(255, 255, 255, 0.3);
+    bottom: 0;
+    left: 0;
+    padding: 0 50px;
+    right: 0;
+}
+
+#carousel-thumbs img:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+#carousel-thumbs .selected img {
+    border-color: #fff;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+}
+@media all and (max-width: 767px) {
+    .carousel-container #carousel-thumbs img {
+        border-width: 3px;
+    }
+}
+@media all and (min-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        position: absolute;
+    }
+}
+@media all and (max-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        /* background: #ccccce; */
+    }
+}

@@ -1,0 +1,13 @@
+.spcialAdImage {
+    width: 100%;
+    height: 30vw;
+    object-fit: fill;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .spcialAdImage {
+        width: 100%;
+        height: 50vw;
+        object-fit: fill;
+    }
+}

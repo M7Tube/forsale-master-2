@@ -1,0 +1,156 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\RealEstate;
+use Illuminate\Database\Seeder;
+
+class RealEstateSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        RealEstate::Create([
+            'en_title' => 'House For Sale',
+            'ar_title' => 'بيت للبيع',
+            'ar_desc' => 'بيت للبيع شسبسيشبيشسب',
+            'en_desc' => 'House For Sale asdfadsf',
+            'phone_number' => '0936869890',
+            'manger_accept' => 2,
+            'isPhone_visable' => 1,
+            'price' => 123,
+            'picture' => json_encode([
+                '2.png',
+                'cars.jpg',
+                '1.png',
+            ]),
+            'is_special' => 1,
+            'watch_count' => 1,
+            'apartment_size' => 123,
+            'land_size' => 321,
+            'building_size' => 213,
+            'floor' => 3,
+            'room_count' => 5,
+            'elevator' => 1,
+            'user_id' => 2,
+            'ros_id' => 1,
+            'REMC_id' => 1,
+            'apartment_status_id' => 1,
+            'building_statuse_id' => 1,
+            'CAAT_id' => 1,
+            'land_type_id' => 1,
+            'governorate_id' => 1,
+            'area_id' => 1,
+            'neighborhood_id' => 1,
+            'ad_type_id' => 1,
+            'ad_statuse_id' => 1,
+        ]);
+        RealEstate::Create([
+            'en_title' => 'ewrqqertre',
+            'ar_title' => 'بيت للبشسيبش',
+            'ar_desc' => 'بشسيبشسيببيشسب',
+            'en_desc' => 'sdfaxvc',
+            'phone_number' => '0936869890',
+            'manger_accept' => 2,
+            'isPhone_visable' => 1,
+            'price' => 123,
+            'picture' => json_encode([
+                '2.png',
+            ]),
+            'is_special' => 1,
+            'watch_count' => 1,
+            'apartment_size' => 123,
+            'land_size' => 321,
+            'building_size' => 213,
+            'floor' => 3,
+            'room_count' => 5,
+            'elevator' => 1,
+            'user_id' => 2,
+            'ros_id' => 1,
+            'REMC_id' => 1,
+            'apartment_status_id' => 1,
+            'building_statuse_id' => 1,
+            'CAAT_id' => 1,
+            'land_type_id' => 1,
+            'governorate_id' => 1,
+            'area_id' => 1,
+            'neighborhood_id' => 1,
+            'ad_type_id' => 1,
+            'ad_statuse_id' => 1,
+        ]);
+        RealEstate::Create([
+            'en_title' => 'Hasdfasdf',
+            'ar_title' => 'بتالنتانع',
+            'ar_desc' => 'بضصثقعتا',
+            'en_desc' => 'asdfewqr',
+            'phone_number' => '0936869890',
+            'manger_accept' => 2,
+            'isPhone_visable' => 1,
+            'price' => 123,
+            'picture' => json_encode([
+                '1.png',
+                'cars.jpg',
+                '2.png',
+            ]),
+            'is_special' => 1,
+            'watch_count' => 1,
+            'apartment_size' => 123,
+            'land_size' => 321,
+            'building_size' => 213,
+            'floor' => 3,
+            'room_count' => 5,
+            'elevator' => 1,
+            'user_id' => 2,
+            'ros_id' => 1,
+            'REMC_id' => 1,
+            'apartment_status_id' => 1,
+            'building_statuse_id' => 1,
+            'CAAT_id' => 1,
+            'land_type_id' => 1,
+            'governorate_id' => 1,
+            'area_id' => 1,
+            'neighborhood_id' => 1,
+            'ad_type_id' => 1,
+            'ad_statuse_id' => 1,
+        ]);
+        RealEstate::Create([
+            'en_title' => 'Hoadsf',
+            'ar_title' => 'سيشب للسيشب',
+            'ar_desc' => 'شسيب شسيب شسبسيشبيشسب',
+            'en_desc' => 'eqwrdsf',
+            'phone_number' => '0936869890',
+            'manger_accept' => 2,
+            'isPhone_visable' => 1,
+            'price' => 123,
+            'picture' => json_encode([
+                'cars.jpg',
+                '1.png',
+                '2.png',
+            ]),
+            'is_special' => 1,
+            'watch_count' => 1,
+            'apartment_size' => 123,
+            'land_size' => 321,
+            'building_size' => 213,
+            'floor' => 3,
+            'room_count' => 5,
+            'elevator' => 1,
+            'user_id' => 2,
+            'ros_id' => 1,
+            'REMC_id' => 1,
+            'apartment_status_id' => 1,
+            'building_statuse_id' => 1,
+            'CAAT_id' => 1,
+            'land_type_id' => 1,
+            'governorate_id' => 1,
+            'area_id' => 1,
+            'neighborhood_id' => 1,
+            'ad_type_id' => 1,
+            'ad_statuse_id' => 1,
+        ]);
+    }
+}

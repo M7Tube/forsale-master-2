@@ -1,0 +1,6 @@
+# *
+# img
+livewire-tmp
+public
+!public/
+!.gitignore

@@ -1,0 +1,62 @@
+use Livewire\WithPagination as LivewireWithPagination;
+use App\Http\Traits\LivewireDashboardTrait;
+    use LivewireWithPagination;
+    use LivewireDashboardTrait;
+    public $car_type_id;
+    public $en_name;
+    public $ar_name;
+
+    public $orderBy = 'en_name';
+    public $orderAsc = true;
+    public $search = '';
+
+    public function Create()
+    {
+        $this->livewire_create(
+            [
+                'en_name' => ['required', 'string', 'max:72'],
+                'ar_name' => ['required', 'string', 'max:72'],
+            ],
+            'App\Models\CarType',
+            ['en_name', 'ar_name'],
+            'Car Type Created Successfully',
+            'Created'
+        );
+    }
+
+    public function edit($id)
+    {
+        $this->livewire_edit('CT', 'App\Models\CarType', 'car_type_id', $id, ['car_type_id', 'en_name', 'ar_name'], 'WrongCarType', 'You Can Not Edit This Car Type');
+    }
+    public function clear()
+    {
+        $this->livewire_clear(['car_type_id', 'en_name', 'ar_name']);
+    }
+    public function update()
+    {
+        $this->livewire_update(
+            [
+                'en_name' => ['string', 'max:72'],
+                'ar_name' => ['string', 'max:72'],
+            ],
+            'CT',
+            'App\Models\CarType',
+            $this->car_type_id,
+            ['en_name', 'ar_name'],
+            'Car Type Updated Successfully',
+            'You Can Not Edit This Car Type',
+            'Updated'
+        );
+    }
+
+    public function delete()
+    {
+        $this->livewire_delete('App\Models\CarType', 'car_type_id', $this->car_type_id, 'Car Type Deleted Successfully', 'Updated');
+    }
+,
+            [
+                'Jobs' => Jobs::search($this->search)
+                    ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
+                    ->simplePaginate(5),
+            ]
+        );
