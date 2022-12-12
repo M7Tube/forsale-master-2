@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\API\CarResource;
 use App\Http\Resources\API\FavoriteResource;
 use App\Http\Resources\API\JobsResource;
+use App\Http\Resources\API\MobileResource;
 use App\Http\Resources\API\MyAdResource;
 use App\Http\Resources\API\RealEstateResource;
 use App\Http\Resources\API\SingleCarResource;
@@ -512,15 +513,18 @@ class SpicalAPIController extends Controller
             $cars = Cars::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['car_id', 'ar_title', 'ar_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'price', 'governorate_id', 'created_at'], 'carpage');
             $real_estates = RealEstate::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['real_estate_id', 'ar_title', 'ar_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'price', 'governorate_id', 'created_at'], 'realestatepage');
             $jobs = Jobs::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['job_id', 'ar_title', 'ar_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'salary', 'governorate_id', 'created_at'], 'jobpage');
+            $mobiles = Mobiles::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['mobile_id', 'ar_title', 'ar_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'price', 'governorate_id', 'created_at'], 'mobilepage');
         } else {
             $cars = Cars::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['car_id', 'en_title', 'en_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'price', 'governorate_id', 'created_at'], 'carpage');
             $real_estates = RealEstate::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['real_estate_id', 'en_title', 'en_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'price', 'governorate_id', 'created_at'], 'realestatepage');
             $jobs = Jobs::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['job_id', 'en_title', 'en_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'salary', 'governorate_id', 'created_at'], 'jobpage');
+            $mobiles = Mobiles::where('user_id', auth()->user()['user_id'])->paginate($per_page, ['mobile_id', 'en_title', 'en_desc', 'phone_number', 'manger_accept', 'picture', 'is_special', 'price', 'governorate_id', 'created_at'], 'mobilepage');
         }
         $data = [
             'cars' => CarResource::collection($cars)->response()->getData(),
             'real_estates' => RealEstateResource::collection($real_estates)->response()->getData(),
             'jobs' => JobsResource::collection($jobs)->response()->getData(),
+            'mobiles' => MobileResource::collection($mobiles)->response()->getData(),
         ];
         if ($data) {
             return $this->success('Ads', $data);
