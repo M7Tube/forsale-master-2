@@ -45,6 +45,7 @@ use App\Models\Governorate;
 use App\Models\Jobs;
 use App\Models\JobsCategory;
 use App\Models\LandType;
+use App\Models\Mobiles;
 use App\Models\Neighborhood;
 use App\Models\PersonLangueges;
 use App\Models\RealEstate;
@@ -439,6 +440,57 @@ class AddNewAdController extends Controller
             if ($jobs) {
                 AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->decrement('count');
                 return $this->success('ad', $jobs);
+            } else {
+                return $this->fails();
+            }
+        } elseif ($request->category == 4) { //mobiles
+            $request->validate([
+                'ar_title' => ['required_without:en_title', 'string', 'max:144'],
+                'en_title' => ['required_without:ar_title', 'string', 'max:144'],
+                'ar_desc' => ['required_without:en_desc', 'string', 'max:1440'],
+                'en_desc' => ['required_without:ar_desc', 'string', 'max:1440'],
+                'picture.*' => ['required', 'mimes:jpg,png,jpeg'],
+            ]);
+            $listOfPicture = [];
+            if ($request->file('picture')) {
+                foreach ($request->file('picture') as $pic) {
+                    $name = $pic->getClientOriginalName() . time() . '.jpg';
+                    $img = Image::make($pic)->resize(1024, 640)->encode('jpg', 100)->interlace()->insert(storage_path('app/img/watermark.png'), 'bottom')->save(storage_path('app/img/' . $name));
+                    array_push($listOfPicture, $name);
+                }
+            }
+            $is_spcial = AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->first();
+
+            $checkAdType = AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->first();
+            if ($checkAdType->count <= 0) {
+                return response()->json([
+                    __('message') => __('Your Ads Is Over')
+                ], 404);
+            }
+            $mobiles = Mobiles::Create([
+                'ar_title' => $request->ar_title ?? null,
+                'en_title' => $request->en_title ?? null,
+                'ar_desc' => $request->ar_desc ?? null,
+                'en_desc' => $request->en_desc ?? null,
+                'phone_number' => $request->phone_number ?? null,
+                'manger_accept' => AppSettings::all()->first()['defualt_manger_accept'] ?? 1,
+                'isPhone_visable' => $request->isPhone_visable ?? 0,
+                'duration_of_use' => $request->duration_of_use ?? null,
+                'ram' => $request->ram ?? null,
+                'price' => $request->price ?? null,
+                'memory' => $request->memory ?? null,
+                'customs_paid' => $request->customs_paid ?? null,
+                'picture' => $listOfPicture != [] ? json_encode($listOfPicture) : json_encode(['defualt.png']),
+                'is_special' => $is_spcial->is_spcial ?? 0,
+                'watch_count' => 0 ?? 0,
+                'user_id' => $request->user_id ?? 0,
+                'governorate_id' => $request->governorate_id ?? 0,
+                'ad_type_id' => $request->ad_type_id ?? 0,
+                'ad_statuse_id' => $request->ad_statuse_id ?? 0,
+            ]);
+            if ($mobiles) {
+                AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->decrement('count');
+                return $this->success('ad', $mobiles);
             } else {
                 return $this->fails();
             }
