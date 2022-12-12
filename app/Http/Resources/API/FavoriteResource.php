@@ -188,7 +188,7 @@ class FavoriteResource extends JsonResource
                     }
                 }
                 return [
-                    'mobile_id' => $this->mobile_id,
+                    'favorite_id' => $this->favorite_id,
                     'user' => ($this->user->first_name ?? null) . ' ' . ($this->user->last_name ?? null),
                     'created_at' => $this->created_at,
                     'ad' => [
