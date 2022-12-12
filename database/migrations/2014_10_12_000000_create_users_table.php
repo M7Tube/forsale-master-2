@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('serial_number')->nullable();
             $table->integer('is_personal')->nullable();
             $table->boolean('is_admin')->default(0);
+            $table->boolean('unlimited')->default(0);
             $table->boolean('is_active')->default(1);
             $table->date('birth_date')->nullable();
             $table->timestamp('email_verified_at')->nullable();

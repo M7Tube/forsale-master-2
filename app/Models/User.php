@@ -33,6 +33,7 @@ class User extends Authenticatable
         'is_personal',
         'is_admin',
         'is_active',
+        'unlimited',
         'birth_date',
         'password',
     ];

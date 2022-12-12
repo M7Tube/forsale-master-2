@@ -27,6 +27,7 @@ use App\Models\RealEstate;
 use App\Models\RealEstateMainCategory;
 use App\Models\RentalTime;
 use App\Models\RentOrSale;
+use App\Models\User;
 use App\Models\YearsOfExperience;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -168,6 +169,7 @@ class AddNewAd extends Component
 
     public function add()
     {
+        $user = User::where('user_id', $this->user_id)->first();
         if ($this->category == 1) { //cars
             $this->validate([
                 'ar_title' => ['required_without:en_title', 'nullable', 'string', 'max:144'],
@@ -197,9 +199,11 @@ class AddNewAd extends Component
 
             $checkAdType = AdType::where('user_id', $this->user_id)->where('ad_type_id', $this->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $car = Cars::Create([
                 'ar_title' => $this->ar_title ?? null,
@@ -251,9 +255,11 @@ class AddNewAd extends Component
 
             $checkAdType = AdType::where('user_id', $this->user_id)->where('ad_type_id', $this->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $real_estate = RealEstate::Create([
                 'en_title' => $this->en_title ?? null,
@@ -308,9 +314,11 @@ class AddNewAd extends Component
 
             $checkAdType = AdType::where('user_id', $this->user_id)->where('ad_type_id', $this->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $jobs = Jobs::Create([
                 'ar_title' => $this->ar_title ?? null,
@@ -361,9 +369,11 @@ class AddNewAd extends Component
 
             $checkAdType = AdType::where('user_id', $this->user_id)->where('ad_type_id', $this->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $mobiles = Mobiles::Create([
                 'ar_title' => $this->ar_title ?? null,

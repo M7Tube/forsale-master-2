@@ -52,6 +52,7 @@ use App\Models\RealEstate;
 use App\Models\RealEstateMainCategory;
 use App\Models\RentalTime;
 use App\Models\RentOrSale;
+use App\Models\User;
 use App\Models\YearsOfExperience;
 use Database\Seeders\RealEstateMainCategorySeeder;
 use Image;
@@ -268,6 +269,7 @@ class AddNewAdController extends Controller
     //
     public function AddNewAd(Request $request, $category)
     {
+        $user = User::where('user_id', $this->user_id)->first();
         if ($request->category == 1) { //cars
             $request->validate([
                 'ar_title' => ['required_without:en_title', 'string', 'max:144'],
@@ -299,9 +301,11 @@ class AddNewAdController extends Controller
 
             $checkAdType = AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $car = Cars::Create([
                 'ar_title' => $request->ar_title ?? null,
@@ -357,9 +361,11 @@ class AddNewAdController extends Controller
 
             $checkAdType = AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $real_estate = RealEstate::Create([
                 'en_title' => $request->en_title ?? null,
@@ -418,9 +424,11 @@ class AddNewAdController extends Controller
 
             $checkAdType = AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $jobs = Jobs::Create([
                 'ar_title' => $request->ar_title ?? null,
@@ -475,9 +483,11 @@ class AddNewAdController extends Controller
 
             $checkAdType = AdType::where('user_id', $request->user_id)->where('ad_type_id', $request->ad_type_id)->first();
             if ($checkAdType->count <= 0) {
-                return response()->json([
-                    __('message') => __('Your Ads Is Over')
-                ], 404);
+                if ($user->unlimited == 0) {
+                    return response()->json([
+                        __('message') => __('Your Ads Is Over')
+                    ], 404);
+                }
             }
             $mobiles = Mobiles::Create([
                 'ar_title' => $request->ar_title ?? null,

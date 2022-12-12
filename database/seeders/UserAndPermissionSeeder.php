@@ -42,6 +42,7 @@ class UserAndPermissionSeeder extends Seeder
             'email' => 'clashroyale.mahh@gmail.com',
             'password' => Hash::make('absamer11111'),
             'is_admin' => 1,
+            'unlimited' => 1,
         ]);
         $super_admin->assignRole($role1);
 
