@@ -580,6 +580,9 @@ class SpicalAPIController extends Controller
                 }],
                 ['job' => function ($query) {
                     $query->select(['job_id', 'ar_title', 'ar_desc', 'en_title', 'en_desc', 'phone_number', 'picture', 'is_special', 'salary', 'governorate_id', 'created_at']);
+                }],
+                ['mobile' => function ($query) {
+                    $query->select(['mobile_id', 'ar_title', 'ar_desc', 'en_title', 'en_desc', 'phone_number', 'picture', 'is_special', 'price', 'governorate_id', 'created_at']);
                 }]
             )->paginate($per_page);
             if ($data) {
@@ -597,6 +600,9 @@ class SpicalAPIController extends Controller
                 }],
                 ['job' => function ($query) {
                     $query->select(['job_id', 'en_title', 'en_desc', 'ar_title', 'ar_desc', 'picture', 'is_special', 'salary', 'manger_accept', 'governorate_id', 'created_at']);
+                }],
+                ['mobile' => function ($query) {
+                    $query->select(['mobile_id', 'en_title', 'en_desc', 'ar_title', 'ar_desc', 'picture', 'is_special', 'price', 'manger_accept', 'governorate_id', 'created_at']);
                 }]
             )->get();
             if ($data) {
