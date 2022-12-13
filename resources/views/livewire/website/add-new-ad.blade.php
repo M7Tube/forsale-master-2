@@ -314,7 +314,7 @@
                 <div class="card p-3">
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <h6>{{ __('Motion Vector') }}
+                            <h6>{{ __('Transmision Vector') }}
                             </h6>
                         </div>
                         <div class="col-12 col-md-6">
