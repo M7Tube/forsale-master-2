@@ -39,8 +39,8 @@ class UserAndPermissionSeeder extends Seeder
             'first_name' => 'Mahmoud',
             'last_name' => 'Habsh',
             'phone_number' => '0936869890',
-            'email' => 'clashroyale.mahh@gmail.com',
-            'password' => Hash::make('absamer11111'),
+            'email' => 'admin@waseetco.com',
+            'password' => Hash::make('mohd1978'),
             'is_admin' => 1,
             'unlimited' => 1,
         ]);
