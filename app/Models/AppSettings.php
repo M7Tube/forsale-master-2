@@ -12,6 +12,10 @@ class AppSettings extends Model
     protected $primaryKey = 'app_setting_id';
     protected $fillable = [
         'email', 'phone_number',
-        'fax', 'facebook', 'twitter', 'instagram', 'wallet_defualt_balance','defualt_manger_accept'
+        'fax', 'facebook', 'twitter', 'instagram', 'wallet_defualt_balance','defualt_manger_accept',
+        'defualt_golden_ad_price',
+        'defualt_normal_ad_price',
+        'defualt_golden_ad_count',
+        'defualt_normal_ad_count',
     ];
 }

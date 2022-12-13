@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 use App\Http\Traits\PermissionsTrait;
+use App\Models\AdType;
 use App\Models\AppSettings;
 use App\Models\Wallet;
 
@@ -61,6 +62,9 @@ class UserAndPermissionSeeder extends Seeder
                 'balance' => AppSettings::all()->first()['wallet_defualt_balance'] ?? '',
                 'user_id' => $user->user_id,
             ]);
+            $settings = AppSettings::all()->first();
+            AdType::Create(['en_name' => 'Normal Ad', 'ar_name' => 'أعلان عادي', 'count' => $settings->defualt_normal_ad_count ?? 1, 'is_spcial' => 0, 'user_id' => 2]);
+            AdType::Create(['en_name' => 'Spcial Ad', 'ar_name' => 'أعلان مميز', 'count' => $settings->defualt_golden_ad_count ?? 1, 'is_spcial' => 1, 'user_id' => 2]);
         }
     }
 }

@@ -4,24 +4,26 @@
             <div class="col-lg-12">
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4">{{ __('App Settings') }}</h3>
+                        <h3 class="text-center font-weight-light my-4"><?php echo e(__('App Settings')); ?></h3>
                     </div>
                     <div class="card-body">
                         <form wire:submit.prevent="edit">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="results">
-                                @if (Session::get('fail'))
+                                <?php if(Session::get('fail')): ?>
                                     <div class="alert alert-danger">
-                                        {{ Session::get('fail') }}
+                                        <?php echo e(Session::get('fail')); ?>
+
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
                             <div class="results">
-                                @if (Session::get('success'))
+                                <?php if(Session::get('success')): ?>
                                     <div class="alert alert-success">
-                                        {{ Session::get('success') }}
+                                        <?php echo e(Session::get('success')); ?>
+
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
                             <div class="row">
                                 <div class="col-12">
@@ -34,7 +36,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('English Terms') }}
+                                                                        <?php echo e(__('English Terms')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -43,12 +46,21 @@
                                                                             <textarea class="form-control" id="en_terms" type="text" wire:model="en_terms" autocomplete="off" rows="10"
                                                                                 cols="10"></textarea>
                                                                             <span class="text-danger">
-                                                                                @error('en_terms')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['en_terms'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Write English Terms') }}
+                                                                                for="date"><?php echo e(__('Write English Terms')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -71,7 +83,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Arabic Terms') }}
+                                                                        <?php echo e(__('Arabic Terms')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -80,12 +93,21 @@
                                                                             <textarea class="form-control" id="ar_terms" type="text" wire:model="ar_terms" autocomplete="off" rows="10"
                                                                                 cols="10"></textarea>
                                                                             <span class="text-danger">
-                                                                                @error('ar_terms')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['ar_terms'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Write Arabic Terms') }}
+                                                                                for="date"><?php echo e(__('Write Arabic Terms')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -108,7 +130,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Manger Accept') }}
+                                                                        <?php echo e(__('Manger Accept')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -117,19 +140,28 @@
                                                                             <select wire:model="manger_accept"
                                                                                 class="form-control" id="">
                                                                                 <option value="0">
-                                                                                    {{ __('Rejected') }}</option>
+                                                                                    <?php echo e(__('Rejected')); ?></option>
                                                                                 <option value="1">
-                                                                                    {{ __('Need Approval') }}</option>
+                                                                                    <?php echo e(__('Need Approval')); ?></option>
                                                                                 <option value="2">
-                                                                                    {{ __('Accepted') }}</option>
+                                                                                    <?php echo e(__('Accepted')); ?></option>
                                                                             </select>
                                                                             <span class="text-danger">
-                                                                                @error('ar_terms')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['ar_terms'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Defualt Manger Accept') }}
+                                                                                for="date"><?php echo e(__('Defualt Manger Accept')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -152,7 +184,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Defualt Wallet Balance') }}
+                                                                        <?php echo e(__('Defualt Wallet Balance')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -164,12 +197,21 @@
                                                                                 wire:model="wallet_defualt_balance"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('wallet_defualt_balance')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['wallet_defualt_balance'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Defualt Wallet Balance') }}
+                                                                                for="date"><?php echo e(__('Defualt Wallet Balance')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -192,7 +234,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Defualt Normal Ad Count') }}
+                                                                        <?php echo e(__('Defualt Normal Ad Count')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -204,12 +247,21 @@
                                                                                 wire:model="defualt_normal_ad_count"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('defualt_normal_ad_count')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['defualt_normal_ad_count'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Defualt Normal Ad Count') }}
+                                                                                for="date"><?php echo e(__('Defualt Normal Ad Count')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -232,7 +284,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Defualt Golden Ad Count') }}
+                                                                        <?php echo e(__('Defualt Golden Ad Count')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -244,12 +297,21 @@
                                                                                 wire:model="defualt_golden_ad_count"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('defualt_golden_ad_count')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['defualt_golden_ad_count'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Defualt Golden Ad Count') }}
+                                                                                for="date"><?php echo e(__('Defualt Golden Ad Count')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -272,7 +334,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Defualt Normal Ad Price') }}
+                                                                        <?php echo e(__('Defualt Normal Ad Price')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -284,12 +347,21 @@
                                                                                 wire:model="defualt_normal_ad_price"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('defualt_normal_ad_price')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['defualt_normal_ad_price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Defualt Normal Ad Price') }}
+                                                                                for="date"><?php echo e(__('Defualt Normal Ad Price')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -312,7 +384,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Defualt Golden Ad Price') }}
+                                                                        <?php echo e(__('Defualt Golden Ad Price')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -324,12 +397,21 @@
                                                                                 wire:model="defualt_golden_ad_price"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('defualt_golden_ad_price')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['defualt_golden_ad_price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Defualt Golden Ad Price') }}
+                                                                                for="date"><?php echo e(__('Defualt Golden Ad Price')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -352,7 +434,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Instagram') }}
+                                                                        <?php echo e(__('Instagram')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -364,12 +447,21 @@
                                                                                 wire:model="instagram"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('instagram')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['instagram'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Instagram') }}
+                                                                                for="date"><?php echo e(__('Instagram')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -392,7 +484,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Facebook') }}
+                                                                        <?php echo e(__('Facebook')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -404,12 +497,21 @@
                                                                                 wire:model="facebook"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('facebook')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['facebook'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Facebook') }}
+                                                                                for="date"><?php echo e(__('Facebook')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -432,7 +534,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Twitter') }}
+                                                                        <?php echo e(__('Twitter')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -444,12 +547,21 @@
                                                                                 wire:model="twitter"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('twitter')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['twitter'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Twitter') }}
+                                                                                for="date"><?php echo e(__('Twitter')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -472,7 +584,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Email') }}
+                                                                        <?php echo e(__('Email')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -484,12 +597,21 @@
                                                                                 wire:model="email"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('email')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Email') }}
+                                                                                for="date"><?php echo e(__('Email')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -512,7 +634,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Phone Number') }}
+                                                                        <?php echo e(__('Phone Number')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -524,12 +647,21 @@
                                                                                 wire:model="phone_number"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('phone_number')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['phone_number'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Phone Number') }}
+                                                                                for="date"><?php echo e(__('Phone Number')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -552,7 +684,8 @@
                                                             <div class="media-body text-right">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        {{ __('Fax') }}
+                                                                        <?php echo e(__('Fax')); ?>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -564,12 +697,21 @@
                                                                                 wire:model="fax"
                                                                                 autocomplete="off"/>
                                                                             <span class="text-danger">
-                                                                                @error('fax')
-                                                                                    {{ $message }}
-                                                                                @enderror
+                                                                                <?php $__errorArgs = ['fax'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                                    <?php echo e($message); ?>
+
+                                                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                             </span>
                                                                             <label
-                                                                                for="date">{{ __('Fax') }}
+                                                                                for="date"><?php echo e(__('Fax')); ?>
+
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -585,7 +727,7 @@
                             </div>
                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                 <button type="submit"
-                                    class="mx-auto w-100 btn btn-block btn-outline-primary">{{ __('Save') }}</button>
+                                    class="mx-auto w-100 btn btn-block btn-outline-primary"><?php echo e(__('Save')); ?></button>
                             </div>
                         </form>
                     </div>
@@ -594,3 +736,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\Users\Abo Samer\Desktop\forsale-master\forsale-master\resources\views/livewire/dashboard/app-settings/index.blade.php ENDPATH**/ ?>

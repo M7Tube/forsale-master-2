@@ -15,14 +15,18 @@ class CreateAppSettingsTable extends Migration
     {
         Schema::create('app_settings', function (Blueprint $table) {
             $table->id('app_setting_id');
-            $table->string('email');
-            $table->string('phone_number');
-            $table->string('fax');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('instagram');
-            $table->integer('wallet_defualt_balance');
-            $table->integer('defualt_manger_accept');
+            $table->string('email')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->integer('wallet_defualt_balance')->nullable();
+            $table->integer('defualt_manger_accept')->nullable();
+            $table->integer('defualt_golden_ad_price')->nullable();
+            $table->integer('defualt_normal_ad_price')->nullable();
+            $table->integer('defualt_golden_ad_count')->nullable();
+            $table->integer('defualt_normal_ad_count')->nullable();
             $table->timestamps();
         });
     }

@@ -24,6 +24,10 @@ class SettingsSeeder extends Seeder
             'instagram' => 'instagram',
             'wallet_defualt_balance' => 5000,
             'defualt_manger_accept' => 2,
+            'defualt_golden_ad_count' => 1,
+            'defualt_normal_ad_price' => 1000,
+            'defualt_normal_ad_count' => 5,
+            'defualt_golden_ad_price' => 5000,
         ]);
     }
 }
