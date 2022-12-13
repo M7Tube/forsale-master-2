@@ -54,6 +54,15 @@
                                     class="btn <?php echo e($data->is_active == 1 ? 'btn-outline-danger' : 'btn-outline-success'); ?>"
                                     wire:click.prevent="active(<?php echo e($data->user_id); ?>)"><?php echo e($data->is_active == 1 ? __('Disable') : __('Enable')); ?></button>
                             <?php endif; ?>
+                            <?php if($data->unlimited == 1): ?>
+                                <button type="button"
+                                    class="btn <?php echo e($data->unlimited == 1 ? 'btn-outline-danger' : 'btn-outline-success'); ?>"
+                                    wire:click.prevent="cancelunlimited(<?php echo e($data->user_id); ?>)"><?php echo e($data->unlimited == 1 ? __('Limited') : __('Unlimited')); ?></button>
+                            <?php else: ?>
+                                <button type="button"
+                                    class="btn <?php echo e($data->unlimited == 1 ? 'btn-outline-danger' : 'btn-outline-success'); ?>"
+                                    wire:click.prevent="makeunlimited(<?php echo e($data->user_id); ?>)"><?php echo e($data->unlimited == 1 ? __('Limited') : __('Unlimited')); ?></button>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </td>
                 <?php endif; ?>

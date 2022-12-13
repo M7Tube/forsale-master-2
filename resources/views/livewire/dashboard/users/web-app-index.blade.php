@@ -49,6 +49,15 @@
                                     class="btn {{ $data->is_active == 1 ? 'btn-outline-danger' : 'btn-outline-success' }}"
                                     wire:click.prevent="active({{ $data->user_id }})">{{ $data->is_active == 1 ? __('Disable') : __('Enable') }}</button>
                             @endif
+                            @if ($data->unlimited == 1)
+                                <button type="button"
+                                    class="btn {{ $data->unlimited == 1 ? 'btn-outline-danger' : 'btn-outline-success' }}"
+                                    wire:click.prevent="cancelunlimited({{ $data->user_id }})">{{ $data->unlimited == 1 ? __('Limited') : __('Unlimited') }}</button>
+                            @else
+                                <button type="button"
+                                    class="btn {{ $data->unlimited == 1 ? 'btn-outline-danger' : 'btn-outline-success' }}"
+                                    wire:click.prevent="makeunlimited({{ $data->user_id }})">{{ $data->unlimited == 1 ? __('Limited') : __('Unlimited') }}</button>
+                            @endif
                         @endif
                     </td>
                 @endrole

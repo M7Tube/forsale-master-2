@@ -74,6 +74,28 @@ class WebAppIndex extends Component
         }
     }
 
+    public function makeunlimited($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            if ($user->is_admin != 1 || $user->hasRole('Super-Admin') == 0) {
+                $user->unlimited = 1;
+                $user->save();
+            }
+        }
+    }
+
+    public function cancelunlimited($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            if ($user->is_admin != 1 || $user->hasRole('Super-Admin') == 0) {
+                $user->unlimited = 0;
+                $user->save();
+            }
+        }
+    }
+
     public function render()
     {
         return view(
